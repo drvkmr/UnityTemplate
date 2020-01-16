@@ -67,3 +67,7 @@ crashlytics-build.properties
 *.package
 *.mpk
 .out/
+
+# Python cache
+__pycache__
+__pycache__.meta

@@ -12,5 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/KitchenSink.unity
     guid: ee6e5d6c4db1248c18e55dc50cd25497
   m_configObjects:
+    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: d34f64d558f90bb4fbfc48cf5cfba7ed,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2ba4dbd235ed941bb8fdb5a40ab00f22,
       type: 2}
