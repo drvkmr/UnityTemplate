@@ -15,11 +15,19 @@ LOW_POSITION = -3.0
 HIGH_POSITION = 3.0
 LOW_ROTATION = 0.0
 HIGH_ROTATION = 360
+FLUCTUATION_AMOUNT = 0.1
 
 client = Client(
     name=str(uuid.uuid4()),
     timestamp=time.time()
 )
+
+
+def get_operand():
+    if bool(random.getrandbits(1)):
+        return 1
+    else:
+        return -1
 
 
 def randomize_offset_values():
@@ -34,6 +42,31 @@ def randomize_offset_values():
                 (random.uniform(LOW_ROTATION, HIGH_ROTATION),
                  random.uniform(LOW_ROTATION, HIGH_ROTATION),
                  random.uniform(LOW_ROTATION, HIGH_ROTATION))
+            )
+        )
+    else:
+        position_x_fluctuation = random.uniform(0, FLUCTUATION_AMOUNT)
+        position_y_fluctuation = random.uniform(0, FLUCTUATION_AMOUNT)
+        position_z_fluctuation = random.uniform(0, FLUCTUATION_AMOUNT)
+        rotation_x_fluctuation = random.uniform(0, FLUCTUATION_AMOUNT)
+        rotation_y_fluctuation = random.uniform(0, FLUCTUATION_AMOUNT)
+        rotation_z_fluctuation = random.uniform(0, FLUCTUATION_AMOUNT)
+        client.offset_transform = OffsetTransform(
+            Position(
+                (client.offset_transform.position.x + position_x_fluctuation *
+                    get_operand(),
+                 client.offset_transform.position.y + position_y_fluctuation
+                 * get_operand(),
+                 client.offset_transform.position.z + position_z_fluctuation
+                 * get_operand())
+            ),
+            Rotation(
+                (client.offset_transform.position.x + rotation_x_fluctuation *
+                 get_operand(),
+                 client.offset_transform.position.y + rotation_y_fluctuation
+                 * get_operand(),
+                 client.offset_transform.position.z + rotation_z_fluctuation
+                 * get_operand())
             )
         )
 

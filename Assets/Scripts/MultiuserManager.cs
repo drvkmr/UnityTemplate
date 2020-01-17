@@ -358,7 +358,7 @@ public class MultiuserManager : MonoBehaviour
         connectedClients[clientState.clientName] = clientState;
         if (!connectedClientGameObjects.ContainsKey(clientState.clientName))
         {
-            connectedClientGameObjects[clientState.clientName] = new GameObject();
+            connectedClientGameObjects[clientState.clientName] = GameObject.CreatePrimitive(PrimitiveType.Cube);;
             connectedClientGameObjects[clientState.clientName].transform.SetParent(transform.parent);
         }
         GameObject connectedClientGameObject = connectedClientGameObjects[clientState.clientName];
